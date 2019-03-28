@@ -4,7 +4,6 @@ global:
 route:
   group_by: ['alertname']
   group_wait: 10s
-  group_interval: 10s
   repeat_interval: 5m
   receiver: 'jzliu'
   routes:
@@ -24,21 +23,3 @@ inhibit_rules:
       alertname: 'HealthCheck'
     target_match_re:
       alertname: '.*'
-
-receivers:
-- name: 'jzliu'
-  email_configs:
-  - to: jzliu@thoughtworks.com
-    from: 152390239@qq.com
-    smarthost: smtp.qq.com:587
-    auth_username: "152390239"
-    auth_identity: "mmejvjdwthfkcbdi"
-    auth_password: "mmejvjdwthfkcbdi"
-- name: 'jzliu2'
-  email_configs:
-  - to: jkasljz@outlook.com
-    from: 152390239@qq.com
-    smarthost: smtp.qq.com:587
-    auth_username: "152390239"
-    auth_identity: "mmejvjdwthfkcbdi"
-    auth_password: "mmejvjdwthfkcbdi"
