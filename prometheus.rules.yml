@@ -1,5 +1,24 @@
 groups:
 - name: example
   rules:
-  - record: job_service:rpc_durations_seconds_count:avg_rate5m
-    expr: avg(rate(rpc_durations_seconds_count[5m])) by (job, service)
+  - alert: MiddleConcurrency
+    expr: avg(rate(rpc_durations_seconds_count[1m])) by (job, service) > 1
+    for: 10s
+    labels:
+      level: waring
+    annotations:
+      description: concurrency more than 1 millions
+  - alert: HighConcurrency
+    expr: avg(rate(rpc_durations_seconds_count[1m])) by (job, service) > 5
+    for: 10s
+    labels:
+      level: critical
+    annotations:
+      description: concurrency more than 5 millions
+  - alert: HealthCheck
+    expr: sum(up) by (job) < 1
+    for: 10s
+    labels:
+      level: critical
+    annotations:
+      description: "{{$labels.job}}'s instances are less than 1"

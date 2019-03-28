@@ -51,3 +51,9 @@ scrape_configs:
       - source_labels: [uri]
         regex: (/actuator/prometheus)|(/\*\*/favicon.ico)
         action: drop
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - "host.docker.internal:9093"

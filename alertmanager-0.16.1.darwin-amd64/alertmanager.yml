@@ -6,14 +6,39 @@ route:
   group_wait: 10s
   group_interval: 10s
   repeat_interval: 1h
-  receiver: 'web.hook'
-receivers:
-- name: 'web.hook'
-  webhook_configs:
-  - url: 'http://127.0.0.1:5001/'
+  receiver: 'jzliu'
+  routes:
+  - receiver: 'jzliu2'
+    group_by: ['job']
+    match:
+      alertname: HealthCheck
+
 inhibit_rules:
   - source_match:
-      severity: 'critical'
+      alertname: 'HighConcurrency'
     target_match:
-      severity: 'warning'
-    equal: ['alertname', 'dev', 'instance']
+      alertname: 'MiddleConcurrency'
+    equal: ['job', 'service']
+  - source_match:
+      job: 'system'
+      alertname: 'HealthCheck'
+    target_match_re:
+      alertname: '.*'
+
+receivers:
+- name: 'jzliu'
+  email_configs:
+  - to: jzliu@thoughtworks.com
+    from: 152390239@qq.com
+    smarthost: smtp.qq.com:587
+    auth_username: "152390239"
+    auth_identity: "mmejvjdwthfkcbdi"
+    auth_password: "mmejvjdwthfkcbdi"
+- name: 'jzliu2'
+  email_configs:
+  - to: jkasljz@outlook.com
+    from: 152390239@qq.com
+    smarthost: smtp.qq.com:587
+    auth_username: "152390239"
+    auth_identity: "mmejvjdwthfkcbdi"
+    auth_password: "mmejvjdwthfkcbdi"
