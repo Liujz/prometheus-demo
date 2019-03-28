@@ -1,20 +1,0 @@
-Z
-K
- {}:{alertname="HighConcurrency"}
-jzliuemail*Îğğä˜ü¬62
-ü½òÂÅ¬ƒé²ÎŸ‹å˜ü¬6q
-a
-"{}:{alertname="MiddleConcurrency"}
-jzliuemail*ëäğä¸Ÿş×2Æ¤¬°³¸ÆçÇñëîĞÚì§×ò¢’ï·ßë<ë“‹å¸Ÿş×W
-G
-{}:{alertname="HealthCheck"}
-jzliuemail*ãıíäĞ¿Ìˆ2	Ø¶„€£ü˜òVã¬ˆåĞ¿Ìˆk
-[
-{}:{alertname="HighLatency"}
-jzliuemail*²åíäğ´‰£:ãÛş„ô­ÌÚ.Ì¾¥¨Ë˜òšüüÙÊ«ˆŞå©˜²”ˆåğ´‰£g
-W
-+{}/{alertname="HealthCheck"}:{job="system"}
-jzliu2email*÷êğäà–“Á2	Â‰»Ø€‡ü÷™‹åà–“Ár
-b
-6{}/{alertname="HealthCheck"}:{alertname="HealthCheck"}
-jzliu2email*†âğäøÀ¬Ä2	Â‰»Ø€‡ü†‘‹åøÀ¬Ä
